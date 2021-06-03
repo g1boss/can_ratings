@@ -42,7 +42,7 @@ def text_similarity(data,metric='lev',threshold=5): # an array of strings
   else:
     return DBSCAN(threshold, metric=jaccard_metric, min_samples=2, algorithm='ball_tree').fit(X)
 
-def cluster_strings(myColumnArray,column_name,metric='lev'):
-  clusters = text_similarity(myColumnArray,metric)
+def cluster_strings(myColumnArray,column_name,metric='lev',threshold=5):
+  clusters = text_similarity(myColumnArray,metric,threshold)
   print("rows:",len(clusters.labels_),"clusters:",max(set(clusters.labels_)))
   return assign_clusters(clusters.labels_,column_name,myColumnArray) 
